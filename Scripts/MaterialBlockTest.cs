@@ -19,6 +19,10 @@ public class MaterialBlockTest : MonoBehaviour
         if (materialBlock == null)
             materialBlock = new MaterialPropertyBlock();
 
+        //before setting property blocks, you should GetPropertyBlock first or
+        //if you have multiple things modifying those values they will lose properties
+        meshRenderer.GetPropertyBlock(materialBlock);
+
         materialBlock.SetFloat("_PupilRadius", amount);
         meshRenderer.SetPropertyBlock(materialBlock);
     }
